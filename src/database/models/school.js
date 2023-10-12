@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       picture: {
         type: DataTypes.STRING,
-        defaultValue: "http://localhost:3000/profile/picture_1697108222963.png",
+        defaultValue:
+          "https://www.pngkit.com/png/detail/17-178229_school-building-icon-school-icon-vector-png.png",
         allowNull: true,
       },
       district: {

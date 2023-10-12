@@ -19,7 +19,8 @@ module.exports = {
       },
       picture: {
         type: Sequelize.STRING,
-        defaultValue: "http://localhost:3000/profile/picture_1697108416639.png",
+        defaultValue:
+          "https://www.pngkit.com/png/detail/72-729651_wikipedia-user-icon-bynightsight-user-icon-png.png",
         allowNull: true,
       },
       email: {
