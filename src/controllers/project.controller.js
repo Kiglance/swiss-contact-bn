@@ -1,5 +1,8 @@
 import { School } from "../database/models";
 import ProjectService from "../services/project.service";
+import "dotenv/config";
+
+const url = process.env.BACKEND_URL;
 
 export default class ProjectController {
   constructor() {
@@ -10,7 +13,7 @@ export default class ProjectController {
     try {
       const { projectName, projectOwner } = req.body;
       if (req.file) {
-        req.body.projectFile = `http://localhost:3000/profile/${req.file.filename}`;
+        req.body.projectFile = `${url}/profile/${req.file.filename}`;
       }
 
       const newProject = await this.projectService.addProject({
@@ -142,7 +145,7 @@ export default class ProjectController {
       const project = await this.projectService.getProjectByPk(id);
 
       if (req.file) {
-        req.body.projectFile = `http://localhost:3000/profile/${req.file.filename}`;
+        req.body.projectFile = `${url}/profile/${req.file.filename}`;
       } else {
         req.body.projectFile = project?.projectFile;
       }

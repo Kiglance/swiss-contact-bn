@@ -4,6 +4,9 @@ import {
   hashPassword,
 } from "../helpers/user.helper";
 import UserService from "../services/user.service";
+import "dotenv/config";
+
+const url = process.env.BACKEND_URL;
 
 export default class UserController {
   constructor() {
@@ -112,7 +115,7 @@ export default class UserController {
       const { id } = req.params;
 
       if (req.file) {
-        req.body.picture = `http://localhost:3000/profile/${req.file.filename}`;
+        req.body.picture = `${url}/profile/${req.file.filename}`;
       }
 
       await this.userService.updateUser({ picture: req.body.picture }, id);
@@ -151,7 +154,7 @@ export default class UserController {
       const user = await this.userService.getUserById(id);
 
       if (req.file) {
-        req.body.picture = `http://localhost:3000/profile/${req.file.filename}`;
+        req.body.picture = `${url}/profile/${req.file.filename}`;
       } else {
         req.body.picture = user?.picture;
       }

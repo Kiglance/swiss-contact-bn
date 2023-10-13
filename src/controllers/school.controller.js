@@ -4,6 +4,9 @@ import {
   hashPassword,
 } from "../helpers/user.helper";
 import SchoolService from "../services/school.service";
+import "dotenv/config";
+
+const url = process.env.BACKEND_URL;
 
 export default class SchoolController {
   constructor() {
@@ -92,7 +95,7 @@ export default class SchoolController {
       const school = await this.schoolService.getSchoolByPk(id);
 
       if (req.file) {
-        req.body.picture = `http://localhost:3000/profile/${req.file.filename}`;
+        req.body.picture = `${url}/profile/${req.file.filename}`;
       } else {
         req.body.picture = school?.picture;
       }
