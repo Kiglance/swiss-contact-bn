@@ -1,2 +1,0 @@
-buildCommand: yarn install && yarn run build
-buildDir: build
